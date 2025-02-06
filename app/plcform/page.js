@@ -37,6 +37,7 @@ function PLCForm() {
             if (response.ok) {
                 // Handle success
                 console.log('Form submitted successfully');
+                window.print();
             } else {
                 // Handle error
                 console.error('Failed to submit form');
@@ -67,21 +68,21 @@ function PLCForm() {
                         <p className='fw-bold mb-0'>Modification #</p>
 
                         <label className='fw-bold mb-0' style={{ width: "auto" }} htmlFor="employee_id">Emply. ID </label>
-                        <input type="input" className="form-control  " style={{ width: "5rem" }} id="employee_id"
+                        <input type="input" className="form-control  " style={{ width: "5rem" }} id="employee_id" required
                             value={formData.employee_id}
                             onChange={handleChange}
                         />
 
                         <label className='fw-bold mb-0 ' style={{ width: "auto" }} htmlFor='employee_name'>Emply. Name </label>
 
-                        <input type="input" className="form-control " style={{ width: "15rem" }} id="employee_name"
+                        <input type="input" className="form-control " style={{ width: "15rem" }} id="employee_name" required
                             value={formData.employee_name}
                             onChange={handleChange} />
 
 
 
                         <label className='mb-0 fw-bold' style={{ width: "auto" }} htmlFor='request_date'>Date: </label>
-                        <input type="date" className="form-control" id="request_date" style={{ width: 'auto' }}
+                        <input type="date" className="form-control" id="request_date" style={{ width: 'auto' }} required
                             value={formData.request_date}
                             onChange={handleChange}
                         />
@@ -92,7 +93,7 @@ function PLCForm() {
                         <div className="col-10">
                             <input type="input" className="form-control text-uppercase" style={{ width: "auto" }} id="plc_tag"
                                 value={formData.plc_tag}
-                                onChange={handleChange}
+                                onChange={handleChange} required
                             />
                         </div>
                     </div>
@@ -102,7 +103,7 @@ function PLCForm() {
                         <div className="col-10">
                             <input type="input" className="form-control" id="description"
                                 value={formData.description}
-                                onChange={handleChange}
+                                onChange={handleChange} required
                             />
                         </div>
                     </div>
@@ -111,7 +112,7 @@ function PLCForm() {
                         <label className="col-3 col-form-label fw-bold" htmlFor='equipment_affected'>Equipment to be affected</label>
                         <div className="col-9">
                             <input type="input" className="form-control" id="equipment_affected"
-                                value={formData.equipment_affected}
+                                value={formData.equipment_affected} required
                                 onChange={handleChange} />
                         </div>
                     </div>
@@ -123,7 +124,7 @@ function PLCForm() {
                         <div className="col">
                             <textarea className="form-control fixed-size" id="details_of_modification" rows="2"
                                 value={formData.details_of_modification}
-                                onChange={handleChange}
+                                onChange={handleChange} required
 
                             />
                         </div>
@@ -155,7 +156,7 @@ function PLCForm() {
                         <div className="col-9">
                             <input type="input" className="form-control text-uppercase" id="reason_for_modification"
                                 value={formData.reason_for_modification}
-                                onChange={handleChange}
+                                onChange={handleChange} required
                             />
                         </div>
                     </div>

@@ -1,4 +1,6 @@
 'use client'
+import "bootstrap/dist/css/bootstrap.css";
+
 import React from 'react'
 // import './PLCForm.css'; // Import the CSS file
 import Image from 'next/image'
@@ -51,6 +53,7 @@ function PLCForm() {
 
     return (
         <div className='print-container'>
+      
             <div className='print-content'>
                 <form className='form-container' onSubmit={handleSubmit}>
 
@@ -62,7 +65,7 @@ function PLCForm() {
                             alt="Picture of the author"
                             className='float-left' />
 
-                        <h3 className='text-center'>PLC MODIFICATION REQUEST FORM</h3>
+                        <h3 className='text-center'>الله اكبر الحمدالله PLC MODIFICATION REQUEST FORM</h3>
                     </div>
                     <div className=" d-flex flex-nowrap mb-2 justify-content-between align-items-center">
                         <p className='fw-bold mb-0'>Modification #</p>

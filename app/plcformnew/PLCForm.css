@@ -1,12 +1,9 @@
-/* @import "bootstrap/dist/css/bootstrap.css"; */
-  @import "tailwindcss";
-
-  @media print {
+@media print {
     .print-container {
         width: 210mm;
-        /* height: 290mm; */
+        height: 297mm;
         margin: 0 auto; /* Center the content */
-        padding: 5mm; /* Reduce the padding */
+        padding: 10mm; /* Reduce the padding */
         box-sizing: border-box;
     }
     .print-content {
@@ -17,14 +14,11 @@
         width: 100%;
     }
     .form-container {
-        font-size: 8pt;
+        font-size: 10pt;
         width: 100%; /* Ensure the form takes full width */
     }
     button,
     .btn {
         display: none;
     }
-}
-.hims{
-  font-size: 8pt;
 }

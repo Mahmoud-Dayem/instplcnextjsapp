@@ -38,3 +38,26 @@ export async function POST(req) {
     });
   }
 }
+
+
+export async function GET(req) {
+  try {
+    const [rows] = await pool.execute(`SELECT * FROM plc_modification_requests ORDER BY id desc`);
+
+    return new Response(JSON.stringify(rows), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  } catch (error) {
+    console.error('Database error:', error);
+    return new Response(JSON.stringify({ error: 'Failed to retrieve data' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+}
+

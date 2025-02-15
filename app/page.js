@@ -1,11 +1,14 @@
-import Image from "next/image";
-import PLCForm from "@/components/PLCForm"
+import React from 'react';
+import NavigationBar from "./NavigationBar";
+import GetAllForms from "@/components/get-all-forms";
+
 
 export default function Home() {
   return (
-    <main className="container">
-
-
+    <main >
+      <NavigationBar />
+      <GetAllForms/>
+      
     </main>
   );
 }

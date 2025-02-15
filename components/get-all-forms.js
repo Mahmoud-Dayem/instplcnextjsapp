@@ -3,15 +3,27 @@ import { useEffect, useState } from 'react';
 
   function GetAllForms() {
   const [forms, setForms] = useState([]);
+  const [loading,setloading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/plc-modification');
       const data = await response.json();
+      if(response.status !== 200){
+        console.log("Error fetching data or no mysql connection");
+        return;
+      }
       setForms(data);
+      setloading(false);
     }
     fetchData();
   }, []);
+
+  if (loading){
+
+    return <div>Loading...</div>
+  }
+
 
   return (
     <div className="container mx-auto px-4">

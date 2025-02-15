@@ -1,9 +1,9 @@
 # Use the official Node.js image as the base image
-# docker build -t mahmouddayem/plcinstapp:0.1.5 .
+# docker build -t mahmouddayem/plcinstapp:0.1.6 .
 # docker run -p 3000:3000 your-dockerhub-username/my-nextjs-app
 # docker login
 # docker tag mahmouddayem/plcinstapp mahmouddayem/plcinstapp:0.1.0
-# docker push mahmouddayem/plcinstapp:0.1.5
+# docker push mahmouddayem/plcinstapp:0.1.6
 
 # docker pull your-dockerhub-username/my-nextjs-app:latest
 # docker run -p 3000:3000 your-dockerhub-username/my-nextjs-app:latest

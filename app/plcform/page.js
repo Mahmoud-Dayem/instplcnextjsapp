@@ -1,5 +1,6 @@
 'use client'
 import "bootstrap/dist/css/bootstrap.css";
+import Link from "next/link";
 
 import React from 'react'
 // import './PLCForm.css'; // Import the CSS file
@@ -26,7 +27,6 @@ function PLCForm() {
     };
 
     const handleSubmit = async (e) => {
-        console.log(formData)
         e.preventDefault();
         try {
             const response = await fetch('/api/plc-modification', {
@@ -38,7 +38,6 @@ function PLCForm() {
             });
             if (response.ok) {
                 // Handle success
-                console.log('Form submitted successfully');
                 window.print();
             } else {
                 // Handle error
@@ -52,202 +51,303 @@ function PLCForm() {
 
 
     return (
-        <div className='print-container'>
-      
-            <div className='print-content'>
-                <form className='form-container' onSubmit={handleSubmit}>
+        <div className='flex flex-col justify-center mx-auto px-4 text-center w-3/4'>
 
-                    <div >
-                        <Image
-                            src="/hcclogo.jpg"
-                            width={80}
-                            height={100}
-                            alt="Picture of the author"
-                            className='float-left' />
+            <form onSubmit={handleSubmit}>
 
-                        <h3 className='text-center'>الله اكبر الحمدالله PLC MODIFICATION REQUEST FORM</h3>
+                <div className=' flex flex-col'>
+                    <Link href='/'>
+                    <Image
+                        src="/hcclogo.jpg"
+                        width={80}
+                        height={100}
+                        alt="Picture of the author"
+                        className='float-left' />
+                        </Link>
+
+                    <h2 className='text-center font-sans
+   text-3xl mb-2'> PLC MODIFICATION REQUEST FORM</h2>
+                </div>
+                <div className="flex gap-3 items-baseline justify-between my-3 w-full  ">
+                    <div className=" flex ">
+
+                    <p className='text-xl font-medium text-gray-900 '>Modification #</p>
                     </div>
-                    <div className=" d-flex flex-nowrap mb-2 justify-content-between align-items-center">
-                        <p className='fw-bold mb-0'>Modification #</p>
+                    <div className="flex items-baseline gap-2   ">
 
-                        <label className='fw-bold mb-0' style={{ width: "auto" }} htmlFor="employee_id">Emply. ID </label>
-                        <input type="input" className="form-control  " style={{ width: "5rem" }} id="employee_id" required
+
+                        <label className='text-xl font-medium' htmlFor="employee_id">Emply. ID </label>
+                        <input type="number"
+                            className="   
+            p-1 text-gray-900 border
+           border-gray-300 rounded-lg
+         bg-yellow-50  
+  
+            text-2xl 
+               
+
+             "
+
+
+                            id="employee_id" required
                             value={formData.employee_id}
                             onChange={handleChange}
                         />
+                    </div>
+                    <div className="flex items-baseline gap-2  ">
 
-                        <label className='fw-bold mb-0 ' style={{ width: "auto" }} htmlFor='employee_name'>Emply. Name </label>
+                        <label className='text-xl font-medium   ' htmlFor='employee_name'>Emply. Name </label>
 
-                        <input type="input" className="form-control " style={{ width: "15rem" }} id="employee_name" required
+                        <input type="input"
+                            className="block  
+                          p-1 text-gray-900 border
+                         border-gray-300 rounded-lg
+                       bg-yellow-50  
+                         focus:ring-blue-500
+                          focus:border-blue-500 
+                          text-2xl 
+                          text-uppercase
+                            
+                           "
+
+                            id="employee_name"
+                             required
                             value={formData.employee_name}
+
+
                             onChange={handleChange} />
 
+                    </div>
+                    <div className="flex items-baseline gap-2 ">
 
-
-                        <label className='mb-0 fw-bold' style={{ width: "auto" }} htmlFor='request_date'>Date: </label>
+                        <label className='text-xl font-medium' htmlFor='request_date'>Date: </label>
                         <input type="date" className="form-control" id="request_date" style={{ width: 'auto' }} required
                             value={formData.request_date}
                             onChange={handleChange}
                         />
                     </div>
+                </div>
 
-                    <div className="row mb-3 align-items-center form-group">
-                        <label className="col-2 col-form-label fw-bold" htmlFor='plc_tag'>PLC Tag </label>
-                        <div className="col-10">
-                            <input type="input" className="form-control text-uppercase" style={{ width: "auto" }} id="plc_tag"
-                                value={formData.plc_tag}
-                                onChange={handleChange} required
-                            />
-                        </div>
+
+
+
+                <div className="flex gap-4 items-baseline justify-start my-3 ">
+                    <label htmlFor="plc_tag" className=" mb-2 text-xl font-medium text-gray-900 ">PLC Tag</label>
+                    <input
+                        id="plc_tag"
+                        value={formData.plc_tag}
+                        onChange={handleChange}
+                        required
+
+
+                        type="text"
+                        className="    
+                         text-gray-900
+                          border
+                       border-gray-100
+                        rounded-lg
+                     bg-green-50  
+                     p-1
+  
+                        text-2xl 
+                        text-uppercase
+                         w-1/4
+
+                         "/>
+                </div>
+
+
+                <div className="flex gap-4 items-baseline justify-start my-3 ">
+                    <label htmlFor="description" className=" mb-2 text-xl font-medium text-gray-900 ">Description</label>
+                    <input
+                        id="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        required
+
+
+
+                        type="text"
+                         className="block  
+                        p-1 text-gray-900 border
+                       border-gray-300 rounded-lg
+                     bg-yellow-50  
+                       focus:ring-blue-500
+                        focus:border-blue-500 
+                        text-xl 
+                          w-3/4
+
+                         "/>
+                </div>
+
+                <div className="flex gap-4 items-baseline justify-start my-3 ">
+                    <label className=" text-xl font-medium" htmlFor='equipment_affected'>Equipment to be affected</label>
+                   
+                        <input type="input" 
+                        
+                        className="block  
+                        p-1 text-gray-900 border
+                       border-gray-300 rounded-lg
+                     bg-yellow-50  
+                  
+                        text-xl 
+                          w-3/4"
+
+                        id="equipment_affected"
+                            value={formData.equipment_affected} required
+                            onChange={handleChange} />
+                    
+                </div>
+
+                <div className="flex flex-col items-start my-10">
+                     
+                        <label className=" text-xl font-medium" htmlFor='details_of_modification'>Details of PLC modification</label>
+                   
+                
+                        <textarea 
+                        
+                        className=" w-full
+                        p-1 text-gray-900 border
+                       border-gray-300 rounded-lg
+                     bg-yellow-50
+                        
+                        
+                        " 
+                        
+                        
+                        
+                        id="details_of_modification" rows="2"
+                            value={formData.details_of_modification}
+                            onChange={handleChange} required
+
+                        />
+                  
+                </div>
+
+                <div className="col-sm-10 d-flex">
+                    <div className='me-3'>
+                        <p className='fw-bold'>Type of Request</p>
+                    </div>
+                    <div className="form-check">
+                        <label htmlFor="new">New </label>
+                        <input className="form-check-input" type="checkbox" id="new" />
                     </div>
 
-                    <div className="row mb-3 align-items-center form-group">
-                        <label className="col-2 col-form-label fw-bold" htmlFor='description'>Description</label>
-                        <div className="col-10">
-                            <input type="input" className="form-control" id="description"
-                                value={formData.description}
-                                onChange={handleChange} required
-                            />
-                        </div>
-                    </div>
-
-                    <div className="row mb-3 align-items-center form-group">
-                        <label className="col-3 col-form-label fw-bold" htmlFor='equipment_affected'>Equipment to be affected</label>
-                        <div className="col-9">
-                            <input type="input" className="form-control" id="equipment_affected"
-                                value={formData.equipment_affected} required
-                                onChange={handleChange} />
-                        </div>
-                    </div>
-
-                    <div className="row mb-3 align-items-center form-group">
-                        <div>
-                            <label className="col col-form-label fw-bold" htmlFor='details_of_modification'>Details of PLC modification</label>
-                        </div>
-                        <div className="col">
-                            <textarea className="form-control fixed-size" id="details_of_modification" rows="2"
-                                value={formData.details_of_modification}
-                                onChange={handleChange} required
-
-                            />
-                        </div>
-                    </div>
-
-                    <div className="col-sm-10 d-flex">
-                        <div className='me-3'>
-                            <p className='fw-bold'>Type of Request</p>
-                        </div>
+                    <div className='ms-5 d-flex'>
                         <div className="form-check">
-                            <label htmlFor="new">New </label>
-                            <input className="form-check-input" type="checkbox" id="new" />
+                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="permanent" />
+                            <label className="form-check-label" htmlFor="gridRadios1">Permanent</label>
                         </div>
-
-                        <div className='ms-5 d-flex'>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="permanent" />
-                                <label className="form-check-label" htmlFor="gridRadios1">Permanent</label>
-                            </div>
-                            <div className="form-check ms-5">
-                                <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="temporarily" />
-                                <label className="form-check-label" htmlFor="gridRadios2">Temporarily</label>
-                            </div>
+                        <div className="form-check ms-5">
+                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="temporarily" />
+                            <label className="form-check-label" htmlFor="gridRadios2">Temporarily</label>
                         </div>
                     </div>
+                </div>
 
-                    <div className="row mb-3 align-items-center form-group">
-                        <label className="col-3 col-form-label fw-bold" htmlFor='reason_for_modification'>Reason for PLC modification</label>
-                        <div className="col-9">
-                            <input type="input" className="form-control text-uppercase" id="reason_for_modification"
-                                value={formData.reason_for_modification}
-                                onChange={handleChange} required
-                            />
-                        </div>
+                <div className="flex gap-4 items-baseline justify-start my-3 ">
+                    <label className="text-xl font-medium w-1/4" htmlFor='reason_for_modification'>Reason for PLC modification</label>
+                    
+                        <input type="input" 
+                        
+                        className=" 
+                        p-1 text-gray-900 border
+                       border-gray-300 rounded-lg
+                     bg-yellow-50
+                     w-3/4
+                        
+                        " 
+                        
+                        
+                        id="reason_for_modification"
+                            value={formData.reason_for_modification}
+                            onChange={handleChange} required
+                        />
+                    
+                </div>
+                <hr />
+
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colSpan="2">Expected Duration of PLC modification if Temporarily</th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th colSpan="2" className="text-center">Date and Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="text-center" style={{ height: "1px" }}>
+                            <td>Applied</td>
+                            <td>Cancelled</td>
+                        </tr>
+                        <tr style={{ height: "1.5rem" }}>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div className="d-flex m-1">
+                    <div className="col-5 fw-bold">
+                        <p>Performed by:</p>
                     </div>
-                    <hr />
-
-                    <table className="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th colSpan="2">Expected Duration of PLC modification if Temporarily</th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
-                                <th colSpan="2" className="text-center">Date and Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="text-center" style={{ height: "1px" }}>
-                                <td>Applied</td>
-                                <td>Cancelled</td>
-                            </tr>
-                            <tr style={{ height: "1.5rem" }}>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div className="d-flex m-1">
-                        <div className="col-5 fw-bold">
-                            <p>Performed by:</p>
-                        </div>
-                        <div className="fw-bold col-4">
-                            <p>Signature:</p>
-                        </div>
-                        <div>
-                            <button type="submit" className="btn btn-success">Submit & Print</button>
-                        </div>
+                    <div className="fw-bold col-4">
+                        <p>Signature:</p>
                     </div>
-                    <hr />
-                    <div className="row justify-content-between align-items-center">
-                        <div className="col-6">
-                            <p className='fw-bold'>HOD Requester:</p>
-                        </div>
-                        <div className="col-6 d-flex align-items-center">
-                            <p className='mb-0 p-3 fw-bold'>Signature:</p>
-                        </div>
-                        <div className="col-6">
-                            <p className='fw-bold'>Requester Manager:</p>
-                        </div>
-                        <div className="col-6 d-flex align-items-center">
-                            <p className='mb-0 p-3 fw-bold'>Signature:</p>
-                        </div>
-                        <div className="col-6">
-                            <p className='fw-bold'>E&I HOD:</p>
-                        </div>
-                        <div className="col-6 d-flex align-items-center">
-                            <p className='mb-0 p-3 fw-bold'>Signature:</p>
-                        </div>
-                        <div className="col-6">
-                            <p className='fw-bold'>PME HOD:</p>
-                        </div>
-                        <div className="col-6 d-flex align-items-center">
-                            <p className='mb-0 p-3 fw-bold'>Signature:</p>
-                        </div>
-
-                        <div className="col-6">
-                            <p className='fw-bold'>Maintenance Manager:</p>
-                        </div>
-                        <div className="col-6 d-flex align-items-center">
-                            <p className='mb-0 p-3 fw-bold'>Signature:</p>
-                        </div>
+                    <div>
+                        <button type="submit" className="btn btn-success">Submit & Print</button>
                     </div>
-                    <hr />
-                    <div className=" mt-2">
-                        <p className="hims fw-lighter lh-sm">
-                            Document No:HIMS-L2-F-01-14.02<br />
-                            Date Issued:17-03-2019<br />
-                            Next Rev. Date:1/10/2027<br />
-                            Revision number:04<br />
-                        </p>
+                </div>
+                <hr />
+                <div className="flex flex-col w-full">
+                    <div className=" flex   ">
+                        <p className=' w-1/2 text-left'>HOD Requester:</p>
+                        <p className='  w-1/4 text-center'>Signature:</p>
+                    </div>
+          
+                    <div className="flex justify-even">
+                        <p className='  w-1/2 text-left'>Requester Manager:</p>
+                        <p className=' w-1/4 text-center'>Signature:</p>
+
+                    </div>
+         
+                    <div className="flex ">
+                        <p className=' w-1/2 text-left '>E&I HOD:</p>
+                        <p className=' w-1/4 text-center '>Signature:</p>
+
+                    </div>
+ 
+                    <div className="flex">
+                        <p className=' w-1/2 text-left'>PME HOD:</p>
+                        <p className=' w-1/4 text-center'>Signature:</p>
+
+
                     </div>
 
+                    <div className="flex">
+                    <p className=' w-1/2 text-left'>Maintenance Manager:</p>
+                    <p className='  w-1/4 text-center'>Signature:</p>
+                    </div>
+
+     
+                </div>
+                <hr />
+                <div className=" flex">
+                    <p className="text-sm text-left ">
+                        Document No:HIMS-L2-F-01-14.02<br />
+                        Date Issued:17-03-2019<br />
+                        Next Rev. Date:1/10/2027<br />
+                        Revision number:04<br />
+                    </p>
+                </div>
 
 
-                </form>
 
-            </div>
+            </form>
+
         </div>
     )
 }

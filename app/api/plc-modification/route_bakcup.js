@@ -1,7 +1,5 @@
 // app/api/plc-modification/route.js
 import pool from '../../lib/db';
-import { unstable_cache } from 'next/cache'
-
 
 
 export async function POST(req) {
@@ -17,7 +15,6 @@ export async function POST(req) {
   } = await req.json();
 
   try {
-    
     const [result] = await pool.execute(
       `INSERT INTO plc_modification_requests 
       (employee_id, employee_name, request_date, plc_tag, description, equipment_affected, details_of_modification, reason_for_modification)
@@ -43,10 +40,8 @@ export async function POST(req) {
 }
 
 
-export async function GET(req) {
+export async function GetAllRequests() {
   try {
-
-    
     const [rows] = await pool.execute(`SELECT * FROM plc_modification_requests ORDER BY id desc`);
 
     return new Response(JSON.stringify(rows), {

@@ -6,7 +6,6 @@ import { useFormState} from 'react-dom'
 function FormSubmit() {
     const   status   = useFormState()
     const name = 'eyad'
-    console.log(`status is ${status} `);
     
     if (status === 'pending') {
         return (
